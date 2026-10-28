@@ -57,9 +57,10 @@ function normalize(d) {
 }
 
 async function load() {
-  const stored = localStorage.getItem(KEY);
+  const admin = localStorage.getItem(AUTH) === KEY_HASH;
+  const draft = admin ? localStorage.getItem(KEY) : null;
   try {
-    data = normalize(stored ? JSON.parse(stored) : await (await fetch("data.json")).json());
+    data = normalize(draft ? JSON.parse(draft) : await (await fetch("data.json", { cache: "no-store" })).json());
   } catch (e) {
     console.warn(e);
   }
