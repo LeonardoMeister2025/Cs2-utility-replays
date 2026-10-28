@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Utilitárias CS</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="shell">
+<header class="topbar">
+  <div class="brand">
+    <div class="logo">U</div>
+    <div><h1>UTILITYBOOK <span class="accent">/ CS</span></h1><p>Suas utilitárias. Sem perder tempo no round.</p></div>
+  </div>
+  <div class="actions">
+    <button class="btn" id="btnKey">🔑 Chave</button>
+    <button class="btn primary admin-only" id="btnAdd">+ Utilitária</button>
+    <button class="btn admin-only" id="btnManage">⚙ Mapas/Tags</button>
+    <button class="btn admin-only" id="btnExport">⬇ Exportar</button>
+    <button class="btn admin-only" id="btnImport">⬆ Importar</button>
+    <input type="file" id="fileImport" accept="application/json" hidden>
+  </div>
+</header>
+
+<section class="hero">
+  <div>
+    <div class="eyebrow">Biblioteca de utilitárias</div>
+    <h2>Veja. Memorize. Execute.</h2>
+    <p>Encontre a lineup certa pelo mapa, lado e região. Seus vídeos, no seu ritmo.</p>
+  </div>
+  <div class="stats">
+    <div class="stat"><strong id="totalCount">0</strong><span>utilitárias</span></div>
+    <div class="stat"><strong id="mapCount">0</strong><span>mapas</span></div>
+  </div>
+</section>
+
+<div class="toolbar">
+  <div class="search-wrap"><span>⌕</span><input id="search" type="search" placeholder="Buscar: smoke janela, flash entrada..."></div>
+</div>
+<nav id="maps" class="map-tabs"></nav>
+
+<div class="filters">
+  <div class="frow"><span class="flabel">Lado</span><div id="teams"></div></div>
+  <div class="frow"><span class="flabel">Local</span><div id="sides"></div></div>
+  <div class="frow"><span class="flabel">Tipo</span><div id="tagFilter"></div></div>
+</div>
+
+<div class="section-head"><h3 id="listTitle">Utilitárias</h3><p id="listSubtitle"></p></div>
+<main id="grid"></main>
+</div>
+
+<!-- Player -->
+<dialog id="playerDlg">
+  <div class="player-head"><strong id="playerTitle"></strong><button id="playerClose">✕</button></div>
+  <div class="player-box" id="playerBox"><div id="ytPlayer"></div><div id="ytShield"></div></div>
+  <div class="pcontrols" id="pcontrols">
+    <button type="button" id="pcPlay" title="Pausar/Continuar">⏸</button>
+    <input type="range" id="pcSeek" min="0" max="100" step="0.1" value="0">
+    <span id="pcTime">0:00</span>
+    <button type="button" id="pcMute" title="Som">🔇</button>
+    <button type="button" id="pcFull" title="Tela cheia">⛶</button>
+  </div>
+  <p id="playerNotes"></p>
+</dialog>
+
+<!-- Form utilitária -->
+<dialog id="itemDlg">
+  <form id="itemForm" method="dialog">
+    <h2 id="itemFormTitle">Utilitária</h2>
+    <label>Título <input name="title" required></label>
+    <label>Mapa <select name="map" required></select></label>
+    <div class="row">
+      <label>Lado <select name="team"></select></label>
+      <label>Local <select name="side"></select></label>
+    </div>
+    <label>Link do vídeo (YouTube ou Instagram) <input name="url" required placeholder="https://youtu.be/... ou https://www.instagram.com/reel/..."></label>
+    <div class="row">
+      <label>Início (s) <input name="start" type="number" min="0" value="0"></label>
+      <label>Fim (s) <input name="end" type="number" min="0" placeholder="opcional"></label>
+    </div>
+    <fieldset><legend>Tags</legend><div id="itemTags"></div></fieldset>
+    <label>Notas <textarea name="notes" rows="2"></textarea></label>
+    <div class="row end">
+      <button type="button" id="itemCancel">Cancelar</button>
+      <button type="submit">Salvar</button>
+    </div>
+  </form>
+</dialog>
+
+<!-- Gerenciar mapas/tags -->
+<dialog id="manageDlg">
+  <h2>Mapas</h2>
+  <ul id="mapList"></ul>
+  <form id="mapForm" class="row"><input id="newMap" placeholder="Novo mapa" required><button>Adicionar</button></form>
+  <h2>Tags</h2>
+  <ul id="tagList"></ul>
+  <form id="tagForm" class="row"><input id="newTag" placeholder="Nova tag" required><button>Adicionar</button></form>
+  <div class="row end"><button id="manageClose">Fechar</button></div>
+</dialog>
+
+<!-- Chave de acesso -->
+<dialog id="keyDlg">
+  <form id="keyForm">
+    <h2>Chave de acesso</h2>
+    <input id="keyInput" type="password" placeholder="Cole sua chave" autocomplete="off" required>
+    <p id="keyErr" class="muted"></p>
+    <div class="row end"><button type="button" id="keyCancel">Cancelar</button><button>Liberar</button></div>
+  </form>
+</dialog>
+
+<script src="app.js"></script>
+</body>
+</html>

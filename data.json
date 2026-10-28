@@ -1,0 +1,22 @@
+{
+  "maps": [
+    { "id": "mirage", "name": "Mirage" },
+    { "id": "inferno", "name": "Inferno" },
+    { "id": "dust2", "name": "Dust 2" }
+  ],
+  "tags": ["Smoke", "Flash", "Molotov", "HE"],
+  "items": [
+    {
+      "id": "exemplo1",
+      "title": "Exemplo: smoke janela (troque pelo seu vídeo)",
+      "map": "mirage",
+      "team": "TR",
+      "side": "mid",
+      "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+      "start": 0,
+      "end": null,
+      "tags": ["Smoke"],
+      "notes": "Mire no canto da torre e use jump-throw."
+    }
+  ]
+}
