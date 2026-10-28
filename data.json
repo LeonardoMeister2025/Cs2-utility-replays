@@ -11,6 +11,18 @@
     {
       "id": "dust2",
       "name": "Dust 2"
+    },
+    {
+      "id": "nuke",
+      "name": "Nuke"
+    },
+    {
+      "id": "ancient",
+      "name": "Ancient"
+    },
+    {
+      "id": "anubis",
+      "name": "Anubis"
     }
   ],
   "tags": [
